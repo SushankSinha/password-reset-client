@@ -44,7 +44,6 @@ function Login() {
   
       } catch (error) {
         
-        console.error('Error:', error.message);  
         alert(error.message)
       }
 
