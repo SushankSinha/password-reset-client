@@ -45,7 +45,7 @@ function Login() {
       } catch (error) {
         
         console.error('Error:', error.message);  
-        alert("Invalid Credentials")
+        alert(error.message)
       }
 
     };
@@ -88,6 +88,7 @@ function Login() {
           variant="outlined"
           style={{ margin: "10px" }}
           name = 'email'
+          required = {true}
           value = {formData.email}
           onChange={handleChange}
         />
@@ -97,6 +98,7 @@ function Login() {
           variant="outlined"
           style={{ margin: "10px" }}
           name = 'password'
+          required = {true}
           value = {formData.password}
           onChange={handleChange}
         />
