@@ -28,8 +28,7 @@ function Register() {
     }      
   } catch (error) {
         
-      console.error('Error:', error.message);
-      alert("Email already exists!")
+      alert(error.message)
     }
   };
 
