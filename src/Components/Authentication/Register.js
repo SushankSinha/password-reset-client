@@ -19,7 +19,7 @@ function Register() {
 
     try{
 
-    const response = await axios.post(`http://localhost:8005/register`, {name, email, password});
+    const response = await axios.post(`https://password-reset-server-xjyj.onrender.com/register`, {name, email, password});
 
     if (response.status === 201) {
       window.alert('Account Created');

@@ -23,7 +23,7 @@ function ForgetPassword() {
 
     try {
       const response = await axios.post(
-        `http://localhost:8005/user_verification`,
+        `https://password-reset-server-xjyj.onrender.com/user_verification`,
         { email: emailData }
       );
 
@@ -42,7 +42,7 @@ function ForgetPassword() {
 
     try {
       const response = await axios.post(
-        `http://localhost:8005/otp_verification`,
+        `https://password-reset-server-xjyj.onrender.com/otp_verification`,
         { email: emailData, otp: otpData }
       );
 
@@ -63,7 +63,7 @@ function ForgetPassword() {
 
     try {
       const response = await axios.post(
-        `http://localhost:8005/reset_password`,
+        `https://password-reset-server-xjyj.onrender.com/reset_password`,
         { email: emailData, password: passwordData }
       );
 
