@@ -6,45 +6,30 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import login from "./Photos/login.png";
 import axios from 'axios'
+import { response } from "express";
 
 
 function Login() {
 
-  const [formData, setFormData] = useState({
-      email: '',
-      password: '',
-    });
-  
-
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormData((prevState) => ({
-        ...prevState,
-        [name]: value,
-      }));
-    };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   
     async function handleSubmit(e) {
       e.preventDefault();
   
       try {
 
-        const response = await axios.post(`https://password-reset-server-xjyj.onrender.com/login`, {
-          method: 'POST',
-          headers : {
-              Accept: 'applicationjson',
-              "Content-Type" : 'applicationjson'
-          },
-          credentials : 'include'
-      }, formData );
+        const response = await axios.post(`https://password-reset-server-xjyj.onrender.com/login`, {email : email, password : password});
 
         if(response.status === 200){
           window.alert("Login Successful");
         }
   
       } catch (error) {
-        
-        alert(error.message)
+
+        if (response.status === 404 ){alert("User does not exists")}
+        if (response.status === 401 ){alert("User does not exists")}
+        console.log(error)
       }
 
     };
@@ -88,8 +73,8 @@ function Login() {
           style={{ margin: "10px" }}
           name = 'email'
           required = {true}
-          value = {formData.email}
-          onChange={handleChange}
+          value = {email}
+          onChange={(e)=>setEmail(e.target.value)}
         />
         <TextField
           id="outlined-basic"
@@ -98,8 +83,8 @@ function Login() {
           style={{ margin: "10px" }}
           name = 'password'
           required = {true}
-          value = {formData.password}
-          onChange={handleChange}
+          value = {password}
+          onChange={(e)=>setPassword(e.target.value)}
         />
 
         <Button
