@@ -11,7 +11,6 @@ function ForgetPassword() {
   const [email, setEmail] = useState(true);
   const [otp, setOtp] = useState(false);
   const [password, setPassword] = useState(false);
-  const [clicked, setClicked] = useState(true);
   const [emailData, setEmailData] = useState("");
   const [otpData, setOtpData] = useState("");
   const [passwordData, setPasswordData] = useState("");
@@ -28,8 +27,8 @@ function ForgetPassword() {
       );
 
       if (response.status === 200) {
-        setClicked(false)
         setOtp(true);
+        setEmail(false);
         window.alert("Email Id verified, Verify OTP sent to your email!");
       }
     } catch (error) {
@@ -48,7 +47,6 @@ function ForgetPassword() {
       );
 
       if (response.status === 200) {
-        setEmail(false);
         setPassword(true);
         setOtp(false);
         window.alert("OTP Verified, Enter your new password!");
@@ -119,7 +117,7 @@ function ForgetPassword() {
           />
 
           <Button
-            disabled={!clicked}
+            disabled={!email}
             onClick={emailSubmit}
             variant="contained"
             style={{ height: "40px", margin: "10px", fontWeight: "bold" }}
