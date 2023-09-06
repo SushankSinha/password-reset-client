@@ -47,7 +47,6 @@ function ForgetPassword() {
       );
 
       if (response.status === 200) {
-        setEmail(false);
         setPassword(true);
         setOtp(false);
         window.alert("OTP Verified, Enter your new password!");
@@ -118,6 +117,7 @@ function ForgetPassword() {
           />
 
           <Button
+            disabled={!email}
             disabled={!email}
             onClick={emailSubmit}
             variant="contained"
