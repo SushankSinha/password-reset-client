@@ -118,7 +118,6 @@ function ForgetPassword() {
 
           <Button
             disabled={!email}
-            disabled={!email}
             onClick={emailSubmit}
             variant="contained"
             style={{ height: "40px", margin: "10px", fontWeight: "bold" }}
