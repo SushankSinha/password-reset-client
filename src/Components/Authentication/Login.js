@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import login from "./Photos/login.png";
 import axios from 'axios'
-import { response } from "express";
 
 
 function Login() {
@@ -26,10 +25,8 @@ function Login() {
         }
   
       } catch (error) {
-
-        if (response.status === 404 ){alert("User does not exists")}
-        if (response.status === 401 ){alert("User does not exists")}
-        console.log(error)
+        alert("No or Invalid credentials")
+       console.log(error)
       }
 
     };
