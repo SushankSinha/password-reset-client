@@ -77,7 +77,7 @@ function ForgetPassword() {
   }
 
   return (
-    <form method="POST">
+    <form >
       <Box
         style={{
           display: "block",
