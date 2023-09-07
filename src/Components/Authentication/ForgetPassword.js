@@ -61,7 +61,7 @@ function ForgetPassword() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
+      const response = await axios.put(
         `https://password-reset-server-xjyj.onrender.com/reset_password`,
         { email: emailData, password: passwordData }
       );
