@@ -25,7 +25,7 @@ function Login() {
         }
   
       } catch (error) {
-        alert("No or Invalid credentials")
+        alert("Invalid credentials")
        console.log(error)
       }
 
