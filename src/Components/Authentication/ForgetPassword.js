@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import forget from "./Photos/forget.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ThreeDots } from "react-loader-spinner";
 
 function ForgetPassword() {
   const [email, setEmail] = useState(true);
@@ -13,6 +14,7 @@ function ForgetPassword() {
   const [password, setPassword] = useState(false);
   const [emailData, setEmailData] = useState("");
   const [otpData, setOtpData] = useState("");
+  const [loader, setloader] = useState(false);
   const [passwordData, setPasswordData] = useState("");
 
   const navigate = useNavigate();
@@ -27,8 +29,9 @@ function ForgetPassword() {
       );
 
       if (response.status === 200) {
-        setEmail(false)
+        setEmail(false);
         setOtp(true);
+        setloader(false)
         window.alert("Email Id verified, Verify OTP sent to your email!");
       }
     } catch (error) {
@@ -53,7 +56,7 @@ function ForgetPassword() {
       }
     } catch (error) {
       console.error("Error:", error.message);
-      alert("Invalid OTP")
+      alert("Invalid OTP");
     }
   }
 
@@ -77,7 +80,7 @@ function ForgetPassword() {
   }
 
   return (
-    <form >
+    <form>
       <Box
         style={{
           display: "block",
@@ -118,12 +121,24 @@ function ForgetPassword() {
 
           <Button
             disabled={!email}
-            onClick={emailSubmit}
+            onClick={()=>{emailSubmit(); setloader(true)}}
             variant="contained"
             style={{ height: "40px", margin: "10px", fontWeight: "bold" }}
           >
             Submit
           </Button>
+          {loader && (
+            <ThreeDots
+              height="80"
+              width="80"
+              radius="9"
+              color="#4fa94d"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={true}
+            />
+          )}
 
           <TextField
             id="otp"
