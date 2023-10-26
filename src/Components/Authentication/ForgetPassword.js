@@ -20,6 +20,7 @@ function ForgetPassword() {
   const navigate = useNavigate();
 
   async function emailSubmit(e) {
+    setloader(true)
     e.preventDefault();
 
     try {
@@ -121,7 +122,7 @@ function ForgetPassword() {
 
           <Button
             disabled={!email}
-            onClick={()=>{emailSubmit(); setloader(true)}}
+            onClick={emailSubmit}
             variant="contained"
             style={{ height: "40px", margin: "10px", fontWeight: "bold" }}
           >
